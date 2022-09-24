@@ -1,51 +1,17 @@
 import styled from "styled-components";
 import { Word } from "./Word";
 import { Letter } from "./Letter";
-export const Words = (props) => {
+import { useState } from "react";
+
+export const Words = ({ wordsCache, currentWord, currentWordInList }) => {
 	return (
 		<WordsStyled>
-			<Word>
-				<Letter letter="a"></Letter>
-				<Letter letter="a"></Letter>
-				<Letter letter="a"></Letter>
-				<Letter letter="a"></Letter>
-				<Letter letter="a"></Letter>
-			</Word>
-			<Word>
-				<Letter letter="a"></Letter>
-				<Letter letter="a"></Letter>
-				<Letter letter="a"></Letter>
-				<Letter letter="a"></Letter>
-				<Letter letter="a"></Letter>
-			</Word>
-			<Word>
-				<Letter letter="a"></Letter>
-				<Letter letter="a"></Letter>
-				<Letter letter="a"></Letter>
-				<Letter letter="a"></Letter>
-				<Letter letter="a"></Letter>
-			</Word>
-			<Word>
-				<Letter letter="a"></Letter>
-				<Letter letter="a"></Letter>
-				<Letter letter="a"></Letter>
-				<Letter letter="a"></Letter>
-				<Letter letter="a"></Letter>
-			</Word>
-			<Word>
-				<Letter letter="a"></Letter>
-				<Letter letter="a"></Letter>
-				<Letter letter="a"></Letter>
-				<Letter letter="a"></Letter>
-				<Letter letter="a"></Letter>
-			</Word>
-			<Word>
-				<Letter letter="a"></Letter>
-				<Letter letter="a"></Letter>
-				<Letter letter="a"></Letter>
-				<Letter letter="a"></Letter>
-				<Letter letter="a"></Letter>
-			</Word>
+			<Word word={currentWordInList == 0 ? currentWord : wordsCache[0]} />
+			<Word word={currentWordInList == 1 ? currentWord : wordsCache[1]} />
+			<Word word={currentWordInList == 2 ? currentWord : wordsCache[2]} />
+			<Word word={currentWordInList == 3 ? currentWord : wordsCache[3]} />
+			<Word word={currentWordInList == 4 ? currentWord : wordsCache[4]} />
+			<Word word={currentWordInList == 5 ? currentWord : wordsCache[5]} />
 		</WordsStyled>
 	);
 };
