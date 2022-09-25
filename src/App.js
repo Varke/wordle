@@ -6,15 +6,22 @@ import { Word } from "./components/Word";
 import { Words } from "./components/Words";
 import { useEffect, useState } from "react";
 import "./index.css";
-
+import axios from "axios";
 function App() {
-	//let current_word_in_list = 0;
-	//let current_word = "";
+  
   const [currentWord, setCurrentWord] = useState("");
   const [currentWordInList, setCurrentWordInList] = useState(0);
   const [wordsCache, setWordsCache] = useState([]);
+  const [mainWord, setMainWord] = useState("");
 
+  useEffect( () => {
+    if( mainWord.length == 0 )
+      axios("https://random-word-api.herokuapp.com/word?number=1&length=5").then((res) => setMainWord(res.data));
+  }, [])
+  
 	useEffect(() => {
+    
+
 		const onKeydown = (e) => {
 			if (e.code == "Enter" && currentWord.length == 5) {
 				setCurrentWordInList(currentWordInList + 1);
@@ -37,8 +44,8 @@ function App() {
 
 	return (
 		<Content>
-			<H1>Wordle</H1>
-			<Words wordsCache={wordsCache} currentWord={currentWord} currentWordInList={currentWordInList}/>
+			<H1>{mainWord}</H1>
+			<Words wordsCache={wordsCache} currentWord={currentWord} currentWordInList={currentWordInList} mainWord={mainWord[0]}/>
 			<Keyboard />
 		</Content>
 	);

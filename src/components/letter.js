@@ -1,8 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const Letter = ({ letter }) => {
-
-	return <LetterStyled>{letter ? letter.toUpperCase() : ""}</LetterStyled>;
+export const Letter = ({ letter, color, needColor }) => {
+	return <LetterStyled color={needColor ? color : css`#2d2b73`}>{letter ? letter.toUpperCase() : ""}</LetterStyled>;
 };
 
 const LetterStyled = styled.div`
@@ -13,7 +12,7 @@ const LetterStyled = styled.div`
 	height: 64px;
 	text-align: center;
 	user-select: none;
-	background: #2d2b73;
+	background: ${(props) => props.color};
 	border-radius: 16px;
 	color: white;
 	font-weight: 500;
